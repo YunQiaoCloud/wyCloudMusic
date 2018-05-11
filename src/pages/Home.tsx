@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
+import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
 
 import '../styles/Home.css'
@@ -170,16 +171,75 @@ class MusicList extends React.Component<Props> {
       )
     })
 
-    const banner = this.state.banners[0] || {}
-    const style2 = { backgroundImage: `url(${banner.pic || banner.url})` }
+    const bannersDom = this.state.banners.map((banner: Banner) => {
+      const bannerStyle = { backgroundImage: `url(${banner.pic || banner.url})` }
+      return (
+        <Link
+          key={banner.targetId}
+          to={{ pathname: '/music', search: `song=${JSON.stringify(banner)}` }}
+        >
+          <i className="cover" style={bannerStyle}/>
+        </Link>
+      )
+    })
+
+    let placeholder = '搜索音乐'
+    if (songs.length) {
+      // 取一个在数组长度范围内的随机整数
+      const random = Math.round(Math.random() * (songs.length ? songs.length - 1 : 0))
+
+      placeholder = `为你推荐 ${songs[random].name}`
+    }
+
+    const settings = {
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      dots: true,
+      pauseOnFocus: true,
+      pauseOnHover: true,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    }
 
     return (
       <div className="Home">
         <div className="Home-header">
-          <input type="text" className="Home-hedaer-search"/>
-          <div className="Home-header-banner" style={style2} />
+          <a href="javascript:;" className="Home-header-me"/>
+          <input
+            type="text"
+            className="Home-hedaer-search"
+            placeholder={placeholder}
+          />
+          <a href="javascript:;" className="Home-header-player"/>
+
+          <div className="Home-header-banner">
+            <Slider {...settings}>
+              {bannersDom}
+            </Slider>
+          </div>
         </div>
         <div className="Home-content">
+          <div className="Home-menu">
+            <a href="javascript:;" className="Home-menu-item">
+              <i className="icon icon-collect" />
+              <span>收藏</span>
+            </a>
+            <a href="javascript:;" className="Home-menu-item">
+              <i className="icon icon-daily" />
+              <span>每日推荐</span>
+            </a>
+            <a href="javascript:;" className="Home-menu-item">
+              <i className="icon icon-personalize" />
+              <span>歌单</span>
+            </a>
+            <a href="javascript:;" className="Home-menu-item">
+              <i className="icon icon-ranking" />
+              <span>排行榜</span>
+            </a>
+          </div>
+
           <hr/>
 
           {

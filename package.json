@@ -6,12 +6,16 @@
   "dependencies": {
     "@types/antd": "^1.0.0",
     "@types/axios": "^0.14.0",
+    "@types/lodash": "^4.14.108",
+    "@types/mobile-detect": "^1.3.4",
     "@types/prop-types": "^15.5.2",
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.6",
+    "@types/react-slick": "^0.23.0",
     "antd": "^3.5.1",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.7.0",
+    "mobile-detect": "^1.4.1",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
     "node-sass-chokidar": "^1.2.2",
@@ -21,7 +25,8 @@
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts-ts": "2.14.0"
+    "react-scripts-ts": "2.14.0",
+    "react-slick": "^0.23.1"
   },
   "scripts": {
     "start-ts": "react-scripts-ts start",
