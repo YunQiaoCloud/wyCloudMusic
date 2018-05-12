@@ -142,7 +142,7 @@ class MusicList extends React.Component<Props> {
       return (
         <Link
           key={personalized.id}
-          to={{ pathname: '/music', search: `song=${JSON.stringify(personalized)}` }}
+          to={{ pathname: '/music' }}
           className="Home-remd-song"
         >
           <img className="cover" src={personalized.picUrl} alt={personalized.name}/>
@@ -162,7 +162,7 @@ class MusicList extends React.Component<Props> {
       return (
         <Link
           key={song.id}
-          to={{ pathname: '/music', search: `song=${JSON.stringify(song)}` }}
+          to={{ pathname: '/music' }}
           className="Home-remd-song"
         >
           <img className="cover" src={song.album.blurPicUrl} alt={song.name}/>
@@ -176,7 +176,7 @@ class MusicList extends React.Component<Props> {
       return (
         <Link
           key={banner.targetId}
-          to={{ pathname: '/music', search: `song=${JSON.stringify(banner)}` }}
+          to={{ pathname: '/music' }}
         >
           <i className="cover" style={bannerStyle}/>
         </Link>
@@ -206,7 +206,10 @@ class MusicList extends React.Component<Props> {
     return (
       <div className="Home">
         <div className="Home-header">
-          <a href="javascript:;" className="Home-header-me"/>
+          <Link
+            className="Home-header-me"
+            to={{ pathname: '/me' }}
+          />
           <input
             type="text"
             className="Home-hedaer-search"

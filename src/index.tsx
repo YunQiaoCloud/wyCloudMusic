@@ -20,6 +20,7 @@ ReactDOM.render(
       <Route path="/user" component={User} />
       <Route path="/sign_in" component={SignIn} />
       <Route path="/music" component={Music} />
+      <Route path="/me" component={User} />
     </Switch>
   </Router>,
   document.getElementById('root') as HTMLElement
