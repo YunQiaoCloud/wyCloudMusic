@@ -4,7 +4,7 @@
   flex-direction: column; }
 
 .User-header {
-  background-color: #f90000;
+  background-color: #d43c33;
   height: 6.5rem;
   color: #fff;
   padding: 2rem 1rem; }
@@ -28,7 +28,7 @@
     padding: 0.1rem 0.6rem;
     border-radius: 0.5rem;
     border: 1px solid #fff;
-    background-color: #f90000; }
+    background-color: #d43c33; }
 
 .User-content {
   flex: 1;
@@ -46,12 +46,10 @@
       align-items: center;
       justify-content: space-between;
       margin: 0 0 0.2rem;
-      font-size: 0.7rem; }
+      font-size: 0.8rem; }
       .User-content .card .title .dim {
         font-weight: 400;
-        font-size: 1rem;
-        transform: scale(0.5);
-        margin-right: -1rem; }
+        font-size: 0.6rem; }
   .User-content .inside-card {
     padding: 0.5rem;
     margin: 0.5rem;
@@ -76,7 +74,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.7rem; }
+  font-size: 0.7rem;
+  margin-top: 1rem; }
 
 .User-content-songs li {
   width: 25%;
@@ -111,9 +110,28 @@
 .User-content-songs .icon-collect {
   background-image: url("../assets/user_collect.svg"); }
 
-.User-content-playlist .playlist-item {
+.User-content-playlist ol {
+  padding-left: 1rem; }
+
+.User-content-playlist:not(.recommended) .playlist-item {
   display: flex;
-  margin-bottom: 0.3rem; }
+  margin-bottom: 0.5rem; }
+  .User-content-playlist:not(.recommended) .playlist-item:first-of-type {
+    margin-top: 1.5rem; }
+
+.User-content-playlist ol .playlist-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0; }
+  .User-content-playlist ol .playlist-item:last-of-type() {
+    border-bottom: none; }
+  .User-content-playlist ol .playlist-item span {
+    font-weight: 500;
+    font-size: 0.8rem; }
+  .User-content-playlist ol .playlist-item .playlist-item-count {
+    margin-top: 0.2rem; }
+    .User-content-playlist ol .playlist-item .playlist-item-count span {
+      font-weight: 400;
+      font-size: 0.6rem; }
 
 .User-content-playlist img {
   width: 2rem;
@@ -131,3 +149,21 @@
 
 .User-content-playlist .playlist-item-count {
   font-size: 0.6rem; }
+
+.User-goback {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  background-image: url("../assets/home.svg");
+  background-position: 0.33rem 0.3rem;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  border: 1px solid #d43c33;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(200, 200, 200, 0.5); }

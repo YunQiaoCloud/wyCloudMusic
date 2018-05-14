@@ -1,5 +1,6 @@
 import * as React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import '../styles/User.css'
 
 interface Props {
@@ -111,7 +112,7 @@ export default class User extends React.Component<Props> {
       )
     })
 
-    const recommendDom = this.state.recommend.map((item: RecommendItem) => {
+    const recommendDom = this.state.recommend.map((item: RecommendItem, index: number) => {
       let name = item.name || ''
 
       if (name.length > 19) {
@@ -119,8 +120,9 @@ export default class User extends React.Component<Props> {
         name += '...'
       }
       return (
-        <div className="playlist-item" key={item.id}>
-          <img src={item.picUrl} alt={item.name}/>
+        <li className="playlist-item" key={item.id}>
+          {/* <img src={item.picUrl} alt={item.name}/> */}
+          {/* <span>{index}.</span> */}
           <span className="playlist-item-info">
             <span>{name}</span>
             <span className="playlist-item-count dim">
@@ -132,12 +134,13 @@ export default class User extends React.Component<Props> {
               <span>{item.trackCount}首</span>
             </span>
           </span>
-        </div>
+        </li>
       )
     })
 
     return (
       <div className="User">
+        <Link to={{pathname: '/'}} className="User-goback"/>
         <div className="User-header">
           <div className="User-header-info">
             <div className="user-info">
@@ -210,21 +213,33 @@ export default class User extends React.Component<Props> {
             </ul>
           </div>
 
-          <div className="User-content-playlist card">
-            <h3 className="title">
-              <span>我喜欢的</span>
-              <a  className="dim" href="javascript:;">查看更多</a>
-            </h3>
-            {playlistDom}
-          </div>
+          {
+            playlistDom.length ?
+            <div className="User-content-playlist card">
+              <h3 className="title">
+                <span>我喜欢的</span>
+                <a  className="dim" href="javascript:;">查看更多</a>
+              </h3>
+              {playlistDom}
+            </div>
+            :
+            null
+          }
 
-          <div className="User-content-playlist card">
-            <h3 className="title">
-              <span>推荐歌单</span>
-              <a  className="dim" href="javascript:;">查看更多</a>
-            </h3>
-            {recommendDom}
-          </div>
+          {
+            recommendDom.length ?
+            <div className="User-content-playlist card recommended">
+              <h3 className="title">
+                <span>推荐歌单</span>
+                <a  className="dim" href="javascript:;">查看更多</a>
+              </h3>
+              <ol>
+                {recommendDom}
+              </ol>
+            </div>
+            :
+            null
+          }
         </div>
       </div>
     )
